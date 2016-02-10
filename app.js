@@ -31,14 +31,14 @@ app.get('/weather/:location', function(request, response){
 })
 
 app.get('/weather/fiveday/:location', function(request, response){
-  http.get('http://api.openweathermap.org/data/2.5/forecast?q=' + request.params.location + ',us&mode=xml&appid=ff74949fda216ea456defe777765a4b9', function(res){
+  http.get('http://api.openweathermap.org/data/2.5/forecast?q=' + request.params.location + ',us&mode=json&appid=ff74949fda216ea456defe777765a4b9', function(res){
 
     var body = "";
     res.on('data', function(d){
       body += d;
     res.on('end', function(){
       var weather = JSON.parse(body);
-      console.log( weather);
+      console.log(weather);
       response.send(weather);
     })
     })
